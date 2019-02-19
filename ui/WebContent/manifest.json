@@ -1,0 +1,171 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "sap.ui.demo.walkthrough",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/OData.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml",
+					"annotations": [
+						"annotations"
+					]
+				}
+			},
+			"annotations": {
+				"uri": "localService/annotations.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/annotations.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.migratedsalesorder.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.migratedsalesorder.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"defaultBindingMode": "OneWay"
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.migratedsalesorder.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"master",
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"master",
+						"salesOrders"
+					]
+				},
+				{
+					"pattern": "SalesOrders",
+					"name": "salesOrders",
+					"target": [
+						"master",
+						"salesOrders"
+					]
+				},
+				{
+					"pattern": "SalesOrders/{salesOrderPath}",
+					"name": "salesOrderDetail",
+					"target": [
+						"master",
+						"salesOrderDetail"
+					]
+				},
+				{
+					"pattern": "GenericDocuments",
+					"name": "genericDocuments",
+					"target": [
+						"master",
+						"docFlow"
+					]
+				},
+				{
+					"pattern": "GenericDocuments/{docFlowPath}",
+					"name": "genericDocumentDetail",
+					"target": [
+						"master",
+						"docFlowDetail"
+					]
+				}
+			],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "masterPages"
+				},
+				"salesOrders": {
+					"viewName": "SalesOrder",
+					"viewId": "salesOrders",
+					"viewLevel": 2
+				},
+				"salesOrderDetail": {
+					"viewName": "SalesOrderDetail",
+					"viewId": "salesOrderDetail",
+					"viewLevel": 3
+				},
+				"docFlow": {
+					"viewName": "DocFlow",
+					"viewId": "docFlow",
+					"viewLevel": 2
+				},
+				"docFlowDetail": {
+					"viewName": "DocFlowDetail",
+					"viewId": "docFlowDetail",
+					"viewLevel": 3
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"technicalError": {
+					"viewName": "ErrorOccurred",
+					"viewId": "errorOccurred"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "WebContent",
+		"_version": "1.1.0"
+	}
+}

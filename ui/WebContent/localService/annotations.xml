@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="vCard" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MigrateHistoricalData">
+			<!-- sales order -->
+			<Annotations Target="MigrateHistoricalData.SalesOrder/DocumentCurrency">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Currency"/>
+			</Annotations>
+			
+			<Annotations Target="MigrateHistoricalData.SalesOrder/Id">
+				<Annotation Term="com.sap.vocabularies.Common.v1.FieldControl" EnumMember="com.sap.vocabularies.Common.v1.FieldControlType/Hidden"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/LegacySalesDocument">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Number"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/ShipToParty">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Ship-To Party"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/SoldToParty">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sold-To Party"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/NetValue">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Net Value"/>
+			</Annotations>
+			
+			<Annotations Target="MigrateHistoricalData.SalesOrder/SalesDocumentType">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Type"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/SalesOrderDate">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Date"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrder/SalesOrganization">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sales Organization"/>
+			</Annotations>
+			
+			
+			<!-- sales order item -->
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/Id">
+				<Annotation Term="com.sap.vocabularies.Common.v1.FieldControl" EnumMember="com.sap.vocabularies.Common.v1.FieldControlType/Hidden"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/SalesOrderItem">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sales Order Item"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/ItemCategory">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Item Category"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/Material">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sales Order Type"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/Plant">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Plant"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/ShipToParty">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Ship To Party"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/SoldToParty">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sold To Party"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/RequestedQuantity">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Requested Quantity"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/RequestedQuantityUnit">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Requested Quantity Unit"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/NetValue">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Net Value"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/DocumentCurrency">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Currency"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.SalesOrderItem/SalesOrder">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Sales Order"/>
+			</Annotations>
+			
+			<!-- GenericDocuments -->
+			<Annotations Target="MigrateHistoricalData.GenericDocument/Id">
+				<Annotation Term="com.sap.vocabularies.Common.v1.FieldControl" EnumMember="com.sap.vocabularies.Common.v1.FieldControlType/Hidden"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.GenericDocument/Document">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Number"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.GenericDocument/Type">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Type"/>
+			</Annotations>
+			<Annotations Target="MigrateHistoricalData.GenericDocument/DocumentDate">
+				<Annotation Term="com.sap.vocabularies.Common.v1.Label" String="Document Date"/>
+			</Annotations>
+			
+			
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

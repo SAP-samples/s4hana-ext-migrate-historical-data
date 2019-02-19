@@ -1,0 +1,67 @@
+This program references the following third party open source or other free download components.
+The third party licensors of these components may provide additional license rights,
+terms and conditions and/or require certain notices as described below.
+
+Jackson-JAXRS-JSON (com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.9.5 - http://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-json-provider)
+Licensed under The Apache Software License, Version 2.0
+ 
+VEINHORN/xelem-wrapper (com.github.VEINHORN:xelem-wrapper:c3e6af2c1f - http://xelem.sourceforge.net/)
+Licensed under under the GNU GENERAL PUBLIC LICENSE. (according to its official website)
+ 
+API for SAP Cloud Platform (Java EE 7 Web Profile TomEE 7) (com.sap.cloud:neo-javaee7-wp-api:1.26.0.1 - https://hana.ondemand.com)
+Licensed under SAP DEVELOPER LICENSE AGREEMENT
+ 
+S/4HANA - Test Utilities (com.sap.cloud.s4hana:testutil:2.1.0 - https://www.sap.com/s4sdk)
+Licensed under SAP DEVELOPER LICENSE AGREEMENT
+ 
+Cloud Platform - SCP Cloud Foundry (com.sap.cloud.s4hana.cloudplatform:scp-cf:2.1.0 - https://www.sap.com/s4sdk)
+Licensed under SAP DEVELOPER LICENSE AGREEMENT
+ 
+Cloud Platform - SCP Neo (com.sap.cloud.s4hana.cloudplatform:scp-neo:2.1.0 - https://www.sap.com/s4sdk)
+Licensed under SAP DEVELOPER LICENSE AGREEMENT
+ 
+Java(TM) EE 7 Web Specification APIs (javax:javaee-web-api:7.0 - http://java.net/javaee-web-api/)
+Licensed under CDDL + GPLv2 with classpath exception
+ 
+JUnit (junit:junit:4.12 - http://junit.org)
+Licensed under Eclipse Public License 1.0
+ 
+Apache CXF CDI Integration (org.apache.cxf:cxf-integration-cdi:3.1.14 - http://cxf.apache.org)
+Licensed under The Apache Software License, Version 2.0
+ 
+Apache DeltaSpike Data-Module API (org.apache.deltaspike.modules:deltaspike-data-module-api:1.8.1 - http://deltaspike.apache.org/parent/parent-code/modules-project/data-module-project/deltaspike-data-module-api)
+Licensed under Apache License, Version 2.0
+ 
+Apache DeltaSpike Data-Module Impl (org.apache.deltaspike.modules:deltaspike-data-module-impl:1.8.1 - http://deltaspike.apache.org/parent/parent-code/modules-project/data-module-project/deltaspike-data-module-impl)
+Licensed under Apache License, Version 2.0
+ 
+Apache HttpClient (org.apache.httpcomponents:httpclient:4.5.3 - http://hc.apache.org/httpcomponents-client)
+Licensed under Apache License, Version 2.0
+ 
+olingo-odata2-jpa-processor-core (org.apache.olingo:olingo-odata2-jpa-processor-core:2.0.10 - http://olingo.apache.org/olingo-odata2-jpa-processor/olingo-odata2-jpa-processor-core)
+Licensed under The Apache Software License, Version 2.0
+ 
+OpenEJB :: TomEE :: RS Web Services (org.apache.openejb:tomee-jaxrs:1.7.5 - http://tomee.apache.org/tomee/tomee-jaxrs)
+Licensed under Apache License, Version 2.0
+ 
+OpenEJB :: Container :: JUnit (org.apache.tomee:openejb-junit:7.0.4 - http://tomee.apache.org/container/openejb-junit)
+Licensed under Apache License, Version 2.0
+ 
+OpenEJB :: TomEE :: TomEE Embedded (org.apache.tomee:tomee-embedded:7.0.4 - http://tomee.apache.org/tomee/tomee-embedded)
+Licensed under Apache License, Version 2.0
+ 
+EclipseLink (non-OSGi) (org.eclipse.persistence:eclipselink:2.6.5 - http://www.eclipse.org/eclipselink)
+Licensed under Eclipse Distribution License v. 1.0
+Licensed under Eclipse Public License v1.0
+ 
+Hamcrest All (org.hamcrest:hamcrest-all:1.3 - https://github.com/hamcrest/JavaHamcrest/hamcrest-all)
+Licensed under New BSD License
+ 
+mockito-core (org.mockito:mockito-core:2.18.3 - https://github.com/mockito/mockito)
+Licensed under The MIT License
+ 
+Project Lombok (org.projectlombok:lombok:1.16.20 - https://projectlombok.org)
+Licensed under The MIT License
+ 
+SLF4J API Module (org.slf4j:slf4j-api:1.7.19 - http://www.slf4j.org)
+Licensed under MIT License

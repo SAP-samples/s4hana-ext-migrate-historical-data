@@ -1,0 +1,32 @@
+/* By default, EclipseLink generates all table and field names in upper case without any delimiter.
+You need to follow the same naming convention when creating tables in HANA DB since table and field names are case-sensitive.
+
+Please refer to help portal for data types: 
+https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/cf394efd3fb4400f9c09d10315028515.html */
+
+entity SALESORDERITEM {
+	key ID: Integer64; // corresponds to long type in Java
+		SALESORDER_ID: Integer64;
+		
+		SALESORDERITEM: Integer64 not null;
+		
+		REQUESTEDQUANTITY: Decimal(9,3);
+		REQUESTEDQUANTITYUNIT: String(255);		
+		
+		NETVALUE: Decimal(9,2);
+		DOCUMENTCURRENCY: String(255);		
+		
+		SHIPTOPARTY: String(255);		
+		
+		TERMSOFPAYMENTKEY: String(255);
+		INCOTERMSLOCATION1: String(255);
+		INCOTERMSLOCATION2: String(255);
+		INCOTERMSPART1: String(255);
+		INCOTERMSPART2: String(255);		
+		INCOTERMSVERSION: String(255);
+				
+		ITEMCATEGORY: String(255);
+		MATERIAL: String(255);		
+		MATERIALDESCRIPTION: String(255);
+		PLANT: String(255);
+}

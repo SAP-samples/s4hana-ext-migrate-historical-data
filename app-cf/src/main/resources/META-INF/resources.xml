@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+	<Resource id="jdbc/DefaultDB" provider="xs.openejb:XS Default JDBC Database"
+		type="javax.sql.DataSource">			
+		<!-- TODO replace the placeholder with the name of an existing db service instance or delete the file if you want to use HSQLDB -->
+		service=<database-service-instance>
+	</Resource>
+</resources>

@@ -1,0 +1,9 @@
+{
+    "name": "hdi-deployer",
+    "dependencies": {
+        "@sap/hdi-deploy": "latest"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/hdi-deploy/deploy.js"
+    }
+}

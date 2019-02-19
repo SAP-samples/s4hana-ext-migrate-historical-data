@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "path": "/sap",
+      "target": {
+        "type": "destination",
+        "name": "MigrateHistoricalDataBackend"        
+      },
+      "description": "Migrated Historical Data Backend service"
+    }
+  ],
+  "welcomeFile": "/WebContent/index.html",
+  "sendWelcomeFileRedirect": true
+}

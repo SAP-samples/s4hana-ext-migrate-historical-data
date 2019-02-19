@@ -1,0 +1,16 @@
+{
+  "routes": [
+  {
+    "source": "/sap",
+    "target": "/",
+    "destination": "backend",
+	"authenticationType": "xsuaa",
+	"csrfProtection": true
+  },
+  {
+    "source": "/",
+    "target": "/",
+    "destination": "frontend",
+	"authenticationType": "xsuaa"
+  }]
+}

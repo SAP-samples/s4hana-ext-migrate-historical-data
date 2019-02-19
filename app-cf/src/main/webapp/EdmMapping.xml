@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JPAEDMMappingModel
+	xmlns="http://www.apache.org/olingo/odata2/jpa/processor/api/model/mapping">
+	<PersistenceUnit name="MigrateHistoricalData">
+		<JPAEntityTypes>
+			<JPAEntityType name="SalesOrder">
+				<JPARelationships>
+					<JPARelationship name="items">to_Items</JPARelationship>
+					<JPARelationship name="successors">to_Successors</JPARelationship>					
+				</JPARelationships>
+			</JPAEntityType>			
+			<JPAEntityType name="SalesOrderItem">
+				<EDMEntitySet>SalesOrderItems</EDMEntitySet>
+				<JPARelationships>
+					<JPARelationship name="salesOrder">to_SalesOrder</JPARelationship>
+				</JPARelationships>
+			</JPAEntityType>
+			<JPAEntityType name="GenericDocument">
+				<JPARelationships>
+					<JPARelationship name="predecessors">to_Predecessors</JPARelationship>
+					<JPARelationship name="successors">to_Successors</JPARelationship>
+					<JPARelationship name="salesOrders">to_SalesOrders</JPARelationship>					
+				</JPARelationships>
+			</JPAEntityType>
+		</JPAEntityTypes>
+	</PersistenceUnit>
+</JPAEDMMappingModel>

@@ -1,0 +1,1 @@
+Copyright (c) ${inceptionYear?string["0"]} ${organizationName}. All rights reserved.

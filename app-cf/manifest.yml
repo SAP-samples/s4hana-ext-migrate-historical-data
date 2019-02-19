@@ -1,0 +1,48 @@
+---
+applications:
+- name: backend
+  routes:
+  # TODO replace a placeholder with the value of your choice
+  - route: <backend-service-url>
+  memory: 1024M
+  instances: 1
+  path: target/migratehistoricaldata-app-cf.war
+  buildpack: sap_java_buildpack  
+  env:
+    TARGET_RUNTIME: tomee
+    SAP_JWT_TRUST_ACL: '[{"clientid" : "*", "identityzone" : "*"}]'
+    JBP_CONFIG_SAPJVM_MEMORY_SIZES: 'metaspace:96m..'
+  services:
+  # TODO replace placeholders with the existing service instances names
+  - <database-service-instance>
+  - <application-logging-service-instance>
+  - <audit-logger-service-instance>
+  - <xsuaa-service-instance>
+  
+- name: frontend
+  routes:
+  # TODO replace a placeholder with the value of your choice
+  - route: <frontend-service-url>
+  path: ../ui
+  root: WebContent
+  memory: 64M
+  disk_quota: 128M
+  buildpack: staticfile_buildpack
+ 
+- name: approuter
+  routes:
+  # TODO replace a placeholder with the value of your choice
+  - route: <main-url>
+  memory: 128M  
+  path: approuter  
+  buildpack: nodejs_buildpack
+  env:
+    # TODO replace placeholders with the previously chosen routes
+    destinations: >
+      [
+        {"name":"backend", "url" :"https://<backend-service-url>", "forwardAuthToken": true}, 
+        {"name":"frontend", "url" :"https://<frontend-service-url>"}
+      ]
+  services:
+  # TODO replace placeholder with the name of the same instance that is used by the backend application
+  - <xsuaa-service-instance>

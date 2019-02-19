@@ -1,0 +1,68 @@
+<mvc:View
+	controllerName="sap.migratedsalesorder.controller.SalesOrder"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%">
+
+	<semantic:DetailPage
+		id="salesOrderPage"
+		title="Sales Order Overview"
+		showNavButton="false"
+		busy="{SalesOrder>/busy}"
+		busyIndicatorDelay="{SalesOrder>/delay}">
+		
+		<semantic:content>	
+
+			<VBox fitContainer="true">
+				<smartFilterBar:SmartFilterBar id="SalesOrderSmartFilterBar"
+					entityType="SalesOrder" 
+					considerSelectionVariants="true"
+					persistencyKey="SmartFilter_MigratedSalesOrder"
+					basicSearchFieldName="LegacySalesDocument"
+					enableBasicSearch="false" > <!-- Basic search does not work -->
+					<smartFilterBar:controlConfiguration>
+						<smartFilterBar:ControlConfiguration key="LegacySalesDocument" filterType="auto" hasValueHelpDialog="true" visibleInAdvancedArea="true" />
+						<smartFilterBar:ControlConfiguration key="SalesOrganization" filterType="auto" hasValueHelpDialog="true" visibleInAdvancedArea="true" /> <!-- Those filters are not appearing as well -->
+						<smartFilterBar:ControlConfiguration key="SoldToParty" filterType="auto" hasValueHelpDialog="true" visibleInAdvancedArea="true" />
+					</smartFilterBar:controlConfiguration>
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<smartFilterBar:layoutData>
+						<FlexItemData shrinkFactor="0"/>
+					</smartFilterBar:layoutData>
+				</smartFilterBar:SmartFilterBar>
+				<smartTable:SmartTable id="editableContainer"
+						entitySet="SalesOrders" 
+						smartFilterId="SalesOrderSmartFilterBar"
+						tableType="Table" useExportToExcel="true"
+						useVariantManagement="false" showVariantManagement="false" 
+						useTablePersonalisation="true" header="Sales Orders"
+						showRowCount="true" persistencyKey="SmartTable_ExtExplorer"
+						enableAutoBinding="true" initiallyVisibleFields="LegacySalesDocument,SalesDocumentType,SalesOrderDate,SalesOrganization,ShipToParty,SoldToParty,NetValue,DocumentCurrency"
+						customData:useSmartField="true" editTogglable="false"
+						editable="false"
+						busy="{SalesOrder>/busy}"
+						busyIndicatorDelay="{SalesOrder>/delay}">
+					<smartTable:customToolbar>
+						<OverflowToolbar design="Transparent">
+							<ToolbarSpacer/>
+							<OverflowToolbarButton id="uploadButton" icon="sap-icon://upload" text="Import Sales Orders" press="onUploadPress" visible="true"
+							tooltip="Import Sales Orders"/>
+						</OverflowToolbar>
+					</smartTable:customToolbar>	
+						
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<smartTable:layoutData>
+						<FlexItemData growFactor="1" />
+					</smartTable:layoutData>	  
+				</smartTable:SmartTable>
+			</VBox>	
+		</semantic:content>
+
+	</semantic:DetailPage>
+
+</mvc:View>

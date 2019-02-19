@@ -1,0 +1,93 @@
+<mvc:View
+	controllerName="sap.migratedsalesorder.controller.DocFlow"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%">
+
+	<semantic:DetailPage
+		id="DocFlowPage"
+		title="Document Flow Overview"
+		showNavButton="false">
+		
+		<semantic:content>	
+
+			<VBox fitContainer="true">
+				<smartFilterBar:SmartFilterBar id="DocFlowSmartFilterBar"
+					entityType="GenericDocument" 
+					considerSelectionVariants="true"
+					persistencyKey="SmartFilter_MigratedSalesOrder_DocFlow"
+					basicSearchFieldName="LegacySalesDocument"
+					enableBasicSearch="false" 
+					
+					> 
+				<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration
+					label="Document Type"
+					key="TypeFilter" 
+					groupId="_BASIC" width="300px" mandatory="mandatory"
+					visibleInAdvancedArea="true">
+					<smartFilterBar:customControl>
+						<ComboBox id="TypeDropDown" customData:hasValue="true" selectedKey="0">
+							<core:Item id="All" key="0" text="All" />
+							<core:Item id="Delivery" key="1" text="Delivery" />
+							<core:Item id="Invoice" key="2" text="Invoice" />
+						</ComboBox>
+					</smartFilterBar:customControl>	
+					
+				</smartFilterBar:ControlConfiguration>
+				
+						<smartFilterBar:ControlConfiguration key="Document" filterType="auto" hasValueHelpDialog="true" visibleInAdvancedArea="false" /> 
+							 <!--<smartFilterBar:ControlConfiguration
+							  key="DocumentDate"
+							  index="3"
+							  label="Document Date"
+							  groupId="_BASIC"
+							  width="300px"
+							  >
+							  <smartFilterBar:customControl>
+							  <DatePicker
+							       id="ValidtestFROM_DT"
+							       valueFormat="MM/dd/yyyy" displayFormat="long"
+							       width="15%"/>
+							  </smartFilterBar:customControl>
+							  </smartFilterBar:ControlConfiguration>-->
+						</smartFilterBar:controlConfiguration> 
+				
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<smartFilterBar:layoutData>
+						<FlexItemData shrinkFactor="0"/>
+					</smartFilterBar:layoutData>
+				</smartFilterBar:SmartFilterBar>
+				<smartTable:SmartTable id="editableContainer_docFlow"
+						beforeRebindTable="onBeforeRebindTableExtension"
+						entitySet="GenericDocuments" 
+						smartFilterId="DocFlowSmartFilterBar"
+						useExportToExcel="true"
+						useVariantManagement="false" showVariantManagement="false" 
+						useTablePersonalisation="true" header="Document Flow"
+						showRowCount="true" persistencyKey="SmartTable_DocFlow"
+						enableAutoBinding="true" initiallyVisibleFields="Document,Id,Type,DocumentDate"
+						customData:useSmartField="true" editTogglable="false"
+						editable="false">
+					<smartTable:customToolbar>
+						<OverflowToolbar design="Transparent">
+							<ToolbarSpacer/>
+						</OverflowToolbar>
+					</smartTable:customToolbar>	
+						
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<smartTable:layoutData>
+						<FlexItemData growFactor="1" />
+					</smartTable:layoutData>	  
+				</smartTable:SmartTable>
+			</VBox>	
+		</semantic:content>
+
+	</semantic:DetailPage>
+
+</mvc:View>

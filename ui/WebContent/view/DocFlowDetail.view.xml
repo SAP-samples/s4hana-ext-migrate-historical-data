@@ -1,0 +1,95 @@
+<mvc:View controllerName="sap.migratedsalesorder.controller.DocFlowDetail" xmlns:mvc="sap.ui.core.mvc"
+          xmlns:core="sap.ui.core"
+          xmlns="sap.m" xmlns:semantic="sap.m.semantic"
+          xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+          xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield"
+          xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+          xmlns:smartTable="sap.ui.comp.smarttable" xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout"
+          xmlns:form="sap.ui.layout.form"
+          height="100%">
+    <semantic:DetailPage id="DocFlowDetailPage" title="Document Flow Detail Page" navButtonPress="onNavBack"
+                         showNavButton="true">
+        <semantic:content>
+            <VBox fitContainer="true">
+                <smartForm:SmartForm id="noneditableContainer" customData:defaultCheckBoxDisplayBehaviour="OnOff"
+                                     customData:defaultDropDownDisplayBehaviour="idAndDescription" editTogglable="false"
+                                     title="{Type}">
+                    <smartForm:Group>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField value="{Document}"/>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField value="{Type}"/>
+                        </smartForm:GroupElement>
+                        <smartForm:GroupElement>
+                            <smartField:SmartField value="{DocumentDate}"/>
+                        </smartForm:GroupElement>
+                    </smartForm:Group>
+                </smartForm:SmartForm>
+                <IconTabBar id="idIconTabBarFiori2" upperCase="true" expanded="{device>/isNoPhone}"
+                            class="sapUiResponsiveContentPadding">
+                    <items>
+                        <IconTabFilter text="Predecessor">
+                        	<smartTable:SmartTable
+                                    id="editableContainer_SalesOrder"
+                                    entitySet="SalesOrders"
+                                    tableBindingPath="to_SalesOrders"
+                                    noData="There are no Sales Orders for this document"
+                                    useExportToExcel="false"
+                                    useVariantManagement="false" showVariantManagement="false"
+                                    useTablePersonalisation="true" header="Sales Orders"
+                                    showRowCount="true" persistencyKey="SmartTable_SalesOrder_LinksInDocFlow_SO"
+                                    enableAutoBinding="true"
+                                    initiallyVisibleFields="LegacySalesDocument,SalesDocumentType,SalesOrderDate"
+                                    customData:useSmartField="true" editTogglable="false"
+                                    editable="false">
+
+                                <smartTable:layoutData>
+                                    <FlexItemData growFactor="100%"/>
+                                </smartTable:layoutData>
+                            </smartTable:SmartTable>
+                            <smartTable:SmartTable
+                                    id="editableContainer_Predecessor"
+                                    entitySet="GenericDocuments"
+                                    tableBindingPath="to_Predecessors"
+                                    noData="There are no predecessors for this document"
+                                    useExportToExcel="false"
+                                    useVariantManagement="false" showVariantManagement="false"
+                                    useTablePersonalisation="true" header="Other Documents"
+                                    showRowCount="true"
+                                    persistencyKey="SmartTable_SalesOrder_LinksInDocFlow_Predecessor"
+                                    enableAutoBinding="true" initiallyVisibleFields="Document,Type,DocumentDate"
+                                    customData:useSmartField="true" editTogglable="false"
+                                    editable="false">
+                                <smartTable:layoutData>
+                                    <FlexItemData growFactor="1"/>
+                                </smartTable:layoutData>
+                            </smartTable:SmartTable>
+                            
+                        </IconTabFilter>
+
+                        <IconTabFilter text="Successor">
+                            <smartTable:SmartTable
+                                    id="editableContainer_Successor"
+                                    entitySet="GenericDocuments"
+                                    tableBindingPath="to_Successors"
+                                    noData="There are no successors for this document"
+                                    useExportToExcel="false"
+                                    useVariantManagement="false" showVariantManagement="false"
+                                    useTablePersonalisation="true" header="Successor Documents"
+                                    showRowCount="true" persistencyKey="SmartTable_SalesOrder_LinksInDocFlow_Successor"
+                                    enableAutoBinding="true" initiallyVisibleFields="Document,Type,DocumentDate"
+                                    customData:useSmartField="true" editTogglable="false"
+                                    editable="false">
+
+                                <smartTable:layoutData>
+                                    <FlexItemData growFactor="1"/>
+                                </smartTable:layoutData>
+                            </smartTable:SmartTable>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </semantic:content>
+    </semantic:DetailPage>
+</mvc:View>

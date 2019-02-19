@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>migratehistoricaldata - Unit Tests</name>
+    <description>migratehistoricaldata - Unit Tests</description>
+
+    <artifactId>migratehistoricaldata-unit-tests</artifactId>
+
+    <parent>
+        <groupId>com.sap.cloud.s4hana</groupId>
+        <artifactId>migratehistoricaldata</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <surefire.skipTests>false</surefire.skipTests>
+        <surefire.forkCount>1</surefire.forkCount>
+        <surefire.include>*</surefire.include>
+        <surefire.exclude/>
+        <surefire.groups/>
+        <surefire.excludedGroups/>
+        <surefire.maxMemorySize>1024m</surefire.maxMemorySize>
+        <surefire.maxPermSize>512m</surefire.maxPermSize>
+        <surefire.defaultLogLevel>warn</surefire.defaultLogLevel>
+
+        <jacoco.destFile>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.destFile>
+        <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sap.cloud.s4hana</groupId>
+            <artifactId>migratehistoricaldata-core</artifactId>            
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        
+		<!-- test framework -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- mocking framework -->
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>2.18.3</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<!-- human readable matchers -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest-all</artifactId>
+		    <version>1.3</version>
+		    <scope>test</scope>
+		</dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.9</version>
+                    <configuration>
+                        <destFile>${jacoco.destFile}</destFile>
+                        <dataFile>${jacoco.destFile}</dataFile>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>pre-unit-test</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${jacoco.outputDirectory}</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20</version>
+                    <configuration>
+                        <argLine>@{argLine}
+                            -Xmx${surefire.maxMemorySize}
+                            -XX:MaxPermSize=${surefire.maxPermSize}
+                            -Dorg.slf4j.simpleLogger.defaultLogLevel=${surefire.defaultLogLevel}
+                            -Djava.io.tmpdir=target/arquillian-working-dir/${surefire.forkNumber}/
+                        </argLine>
+                        <skipTests>${surefire.skipTests}</skipTests>
+                        <includes>
+                            <include>${surefire.include}</include>
+                        </includes>
+                        <excludes>
+                            <exclude>${surefire.exclude}</exclude>
+                        </excludes>
+                        <forkCount>${surefire.forkCount}</forkCount>
+                        <reuseForks>false</reuseForks>
+                        <groups>${surefire.groups}</groups>
+                        <excludedGroups>${surefire.excludedGroups}</excludedGroups>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${maven.license.version}</version>
+				<configuration>
+					<skipAddThirdParty>true</skipAddThirdParty>
+					<skipUpdateProjectLicense>true</skipUpdateProjectLicense>
+					<skipAggregateAddThirdParty>true</skipAggregateAddThirdParty>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>

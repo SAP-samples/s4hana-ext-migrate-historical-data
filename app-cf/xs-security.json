@@ -1,0 +1,30 @@
+{
+    "xsappname": "xsuaa",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.Viewer",
+            "description": "Can view the data"
+        },
+        {
+            "name": "$XSAPPNAME.Admin",
+            "description": "Can run import, create, update or delete data"
+        }
+  ],
+    "role-templates": [
+    {
+            "name": "Viewer",
+            "description": "",
+            "scope-references": [
+             "$XSAPPNAME.Viewer"
+              ]
+    },
+    {
+            "name": "Admin",
+            "description": "SOC Administrator Role Template",
+            "scope-references": [
+             "$XSAPPNAME.Admin", "$XSAPPNAME.Viewer"
+              ]              
+    }
+  ]
+}

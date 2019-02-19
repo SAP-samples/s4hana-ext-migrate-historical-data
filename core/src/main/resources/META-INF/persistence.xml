@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="MigrateHistoricalData" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/DefaultDB</jta-data-source>
+		<class>com.sap.cloud.s4hana.migratehistoricaldata.model.SalesOrder</class>
+		<class>com.sap.cloud.s4hana.migratehistoricaldata.model.SalesOrderItem</class>
+		<class>com.sap.cloud.s4hana.migratehistoricaldata.model.GenericDocument</class>
+		<properties>
+			<!-- You can also use the "drop-and-create-tables" value for testing purposes 
+			to clean the database each time the application is restarted and ensure 
+			that the schema is up to date every time the data model is changed -->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+
+			<!-- Optional: generate and store SQL DML queries locally in `integration-tests` 
+			folder to know a database schema desired by EclipseLink. If the data model 
+			of the DB schema is NOT the same as EclipseLink expects, EclipseLink will 
+			try to create missing artifacts: fields, tables and constraints. When used 
+			with HANA service on Cloud Foundry, EclipseLink cannot create a DB schema, 
+			and you need to create it manually e.g. using an hdi-deployer module from 
+			the "db" folder. In such case, if the deployed schema is not as expected,
+			EclipseLink will try to fix it and errors will be logged. These logs may
+			help to find errors in the manually created schema and to fix it -->
+			<property name="eclipselink.ddl-generation.output-mode" value="both"/>
+			
+			<!-- TODO set the correct value that corresponds to the used database.
+			Supported values: PostgreSQL, HANA, Sybase (for ASE), Auto (local testing) -->
+			<property name="eclipselink.target-database" value="HANA"/>
+		</properties>
+	</persistence-unit>
+</persistence>

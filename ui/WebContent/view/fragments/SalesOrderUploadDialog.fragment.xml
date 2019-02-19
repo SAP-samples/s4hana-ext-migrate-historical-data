@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns="sap.ui.commons" xmlns:b="sap.suite.ui.commons"
+	xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout.form">
+	<m:Dialog id="UploadDialog" draggable="true" resizable="false" afterClose="onAfterClose" horizontalScrolling="false" showHeader="false">
+		<m:content>
+			<l:SimpleForm editable="true" title="Sales Order Upload">
+				<l:content>
+					<u:FileUploader id="AttachUploader" width="700px" uploadComplete="handleUploadComplete"
+						placeholder="Select your file to upload" style="Emphasized" uploadUrl="/sap/rest/SalesOrders/import"
+						name="file" sendXHR="true" useMultipart="true">
+					</u:FileUploader>
+				</l:content>
+			</l:SimpleForm>
+		</m:content>
+		<m:buttons>
+			<m:Button icon="sap-icon://upload" id="ButAttachUpload" press="OnAttachUpload" text="upload" type="Emphasized"/>
+			<m:Button icon="sap-icon://cancel" id="ButAttachCancel" press="OnUploadCancel" text="Cancel" type="Emphasized"/>
+		</m:buttons>
+	</m:Dialog>
+</core:FragmentDefinition>

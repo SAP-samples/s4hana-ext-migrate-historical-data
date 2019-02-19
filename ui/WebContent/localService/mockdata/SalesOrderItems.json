@@ -1,0 +1,186 @@
+{
+	"d": {
+		"results": [
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(5L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(5L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": null,
+				"Id": "5",
+				"IncotermsLocation1": null,
+				"IncotermsLocation2": null,
+				"IncotermsPart1": null,
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "FG126",
+				"MaterialDescription": "FG126 Description",
+				"NetValue": null,
+				"Plant": null,
+				"RequestedQuantity": "30.000",
+				"RequestedQuantityUnit": "PCS",
+				"SalesOrder": "1",
+				"SalesOrderItem": "1",
+				"ShipToParty": null,
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(5L)/to_SalesOrder"
+					}
+				}
+			},
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(6L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(6L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": null,
+				"Id": "6",
+				"IncotermsLocation1": "Hamburg",
+				"IncotermsLocation2": null,
+				"IncotermsPart1": "EXW",
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "FG126",
+				"MaterialDescription": "FG126 Description",
+				"NetValue": null,
+				"Plant": null,
+				"RequestedQuantity": "20.000",
+				"RequestedQuantityUnit": "KG",
+				"SalesOrder": "2",
+				"SalesOrderItem": "10",
+				"ShipToParty": null,
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(6L)/to_SalesOrder"
+					}
+				}
+			},
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(7L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(7L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": null,
+				"Id": "7",
+				"IncotermsLocation1": null,
+				"IncotermsLocation2": null,
+				"IncotermsPart1": null,
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "Power Plant Turbine",
+				"MaterialDescription": "Power Plant Turbine Description",
+				"NetValue": null,
+				"Plant": "1010",
+				"RequestedQuantity": "50.000",
+				"RequestedQuantityUnit": "M",
+				"SalesOrder": "2",
+				"SalesOrderItem": "20",
+				"ShipToParty": null,
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(7L)/to_SalesOrder"
+					}
+				}
+			},
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(8L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(8L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": null,
+				"Id": "8",
+				"IncotermsLocation1": null,
+				"IncotermsLocation2": null,
+				"IncotermsPart1": null,
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "FG126",
+				"MaterialDescription": "FG126 Description",
+				"NetValue": null,
+				"Plant": null,
+				"RequestedQuantity": "11.000",
+				"RequestedQuantityUnit": "OZ",
+				"SalesOrder": "3",
+				"SalesOrderItem": "10",
+				"ShipToParty": "Receiver Corp (item level test)",
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(8L)/to_SalesOrder"
+					}
+				}
+			},
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(9L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(9L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": "EUR",
+				"Id": "9",
+				"IncotermsLocation1": null,
+				"IncotermsLocation2": null,
+				"IncotermsPart1": null,
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "TG12",
+				"MaterialDescription": "TG12 Description",
+				"NetValue": "18.00",
+				"Plant": null,
+				"RequestedQuantity": "30.000",
+				"RequestedQuantityUnit": "Meter",
+				"SalesOrder": "4",
+				"SalesOrderItem": "1",
+				"ShipToParty": null,
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(9L)/to_SalesOrder"
+					}
+				}
+			},
+			{
+				"__metadata": {
+					"id": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(10L)",
+					"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(10L)",
+					"type": "MigrateHistoricalData.SalesOrderItem"
+				},
+				"DocumentCurrency": "EUR",
+				"Id": "10",
+				"IncotermsLocation1": null,
+				"IncotermsLocation2": null,
+				"IncotermsPart1": null,
+				"IncotermsPart2": null,
+				"IncotermsVersion": null,
+				"ItemCategory": null,
+				"Material": "Pommes mit ohne alles",
+				"MaterialDescription": "Pommes mit ohne alles Description",
+				"NetValue": "22.00",
+				"Plant": "Kaufland gute woche",
+				"RequestedQuantity": "25.000",
+				"RequestedQuantityUnit": "Megaton",
+				"SalesOrder": "4",
+				"SalesOrderItem": "2",
+				"ShipToParty": null,
+				"TermsOfPaymentKey": null,
+				"to_SalesOrder": {
+					"__deferred": {
+						"uri": "https://migratehistoricald070808sapdev.int.sap.hana.ondemand.com:443/migratehistoricaldata-application/OData.svc/SalesOrderItems(10L)/to_SalesOrder"
+					}
+				}
+			}
+		]
+	}
+}

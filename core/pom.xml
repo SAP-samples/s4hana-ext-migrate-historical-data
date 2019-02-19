@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>migratehistoricaldata - Backend application's core files</name>
+    <description>migratehistoricaldata - Backend application's core files to be reused in both Neo and Cloud foundry versions</description>
+
+    <artifactId>migratehistoricaldata-core</artifactId>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.sap.cloud.s4hana</groupId>
+        <artifactId>migratehistoricaldata</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <!-- if you are behind a proxy use the following two properties to configure your proxy. Default: None -->
+        <proxy.host />
+        <proxy.port />
+        <non.proxy.hosts />
+
+        <!-- Properties that are related to the SAP Cloud Platform. -->
+        <scp.sdkVersion>1.14.5</scp.sdkVersion>
+
+        <!-- this is the location of your local SCP Neo runtime -->
+        <scp.sdkInstallPath>${project.basedir}/scp/sdk-${scp.sdkVersion}</scp.sdkInstallPath>
+        <scp.sdkLocalServerContentPath>${project.basedir}/localServerContent</scp.sdkLocalServerContentPath>
+        <scp.sdkErpEndpoint>${scp.sdkInstallPath}/server/config_master/service.destinations/destinations/ErpQueryEndpoint</scp.sdkErpEndpoint>
+
+        <scp.sdkSymbolicLink>${project.basedir}/scp/sdk</scp.sdkSymbolicLink>
+        <scp.sdkNeoCmdExtension>.sh</scp.sdkNeoCmdExtension>
+        <scp.sdkNeoCmd>${scp.sdkInstallPath}/tools/neo${scp.sdkNeoCmdExtension}</scp.sdkNeoCmd>
+        <scp.sdkLocalServer>${scp.sdkInstallPath}/server</scp.sdkLocalServer>
+
+        <scp.skipInstallSdk>false</scp.skipInstallSdk>
+        <scp.skipDeploy>false</scp.skipDeploy>
+        <scp.skipPutDestination>false</scp.skipPutDestination>
+        <scp.skipRestart>false</scp.skipRestart>
+        <scp.skipRollingUpdate>true</scp.skipRollingUpdate>
+
+        <scp.vmArguments />
+        <scp.vmSize>lite</scp.vmSize>
+        <scp.vmMinProcesses>1</scp.vmMinProcesses>
+        <scp.vmMaxProcesses>1</scp.vmMaxProcesses>
+
+        <scp.app />
+        <scp.host />
+        <scp.account />
+        <scp.username />
+        <scp.password />
+
+        <!-- Required for SCP user session management and audit logging. -->
+        <scp.warImportPackage>com.sap.security.auth.service,com.sap.security.um.service.api,com.sap.core.service.auditlog.impl,com.sap.cloud.auditlog,com.sap.cloud.auditlog.exception,com.sap.cloud.auditlog.extension</scp.warImportPackage>
+
+        <!-- Defines whether the deployment is productive or not. -->
+        <productive />
+    </properties>
+
+    <dependencies>
+		<!-- Please note that the older Java EE 6 API of TomEE runtime from CloudFoundry 
+		doesn't support some features from Java EE 7 Web Profile API from Neo -->
+    	<dependency>
+			<groupId>com.sap.cloud</groupId>
+			<artifactId>neo-javaee7-wp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- JAX-RS Implementation (REST server) for Neo -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-integration-cdi</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- user accessor and audit logger  -->
+		<dependency>
+			<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+			<artifactId>scp-cf</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<scope>compile</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-jpa-processor-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-data-module-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-data-module-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+        <dependency>
+			<groupId>com.github.VEINHORN</groupId>
+			<artifactId>xelem-wrapper</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+    </dependencies>
+    
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${maven.license.version}</version>
+					<configuration>
+						<skipAddThirdParty>true</skipAddThirdParty>
+						<skipUpdateProjectLicense>true</skipUpdateProjectLicense>
+						<skipAggregateAddThirdParty>true</skipAggregateAddThirdParty>
+					</configuration>
+				</plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    
+</project>
