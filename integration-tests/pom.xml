@@ -55,22 +55,6 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
-        <!-- test framework -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- mocking framework -->
-		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-core</artifactId>
-		    <version>2.18.3</version>
-		    <scope>test</scope>
-		</dependency>
 
 		<!-- human readable matchers -->
 		<dependency>
@@ -80,7 +64,7 @@
 		    <scope>test</scope>
 		</dependency>
 		
-		<!-- mock SAP Cloud Platform for testing --> 
+		<!-- mock SAP Cloud Platform for testing  with Junit and Mockito --> 
 		<dependency>
             <groupId>com.sap.cloud.s4hana</groupId>
             <artifactId>testutil</artifactId>
