@@ -1,3 +1,6 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/s4hana-ext-migrate-historical-data)](https://api.reuse.software/info/github.com/SAP-samples/s4hana-ext-migrate-historical-data)
+
+
 # SAP S/4HANA Cloud Extensions - Migrated Sales Order Data
 This repository contains the sample code for the [Migrated Sales Order Data tutorial](https://tiny.cc/s4-migrate-historic-data).
 
