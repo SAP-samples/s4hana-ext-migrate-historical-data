@@ -64,7 +64,7 @@
 		    <scope>test</scope>
 		</dependency>
 		
-		<!-- mock SAP Cloud Platform for testing  with Junit and Mockito --> 
+		<!-- mock SAP Business Technology Platform (BTP) for testing  with Junit and Mockito --> 
 		<dependency>
             <groupId>com.sap.cloud.s4hana</groupId>
             <artifactId>testutil</artifactId>
