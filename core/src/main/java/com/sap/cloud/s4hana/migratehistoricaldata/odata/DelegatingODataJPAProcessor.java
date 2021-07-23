@@ -26,7 +26,7 @@ import lombok.experimental.Delegate;
  * methods of the annotated bean run in a transaction. The annotation can also
  * be placed on particular methods. It is introduced in Contexts and Dependency
  * Injection API (CDI) v1.1 that is a part of Java EE 7 Web Profile API
- * implemented by the SAP Cloud Platform Neo Java EE 7 Web Profile TomEE
+ * implemented by the SAP Business Technology Platform (BTP) Java EE 7 Web Profile TomEE
  * runtime. Methods of CDI managed beans can also be declaratively secured with
  * CDI interceptor annotations (e.g. Apache DeltaSpike Security).
  * <p>

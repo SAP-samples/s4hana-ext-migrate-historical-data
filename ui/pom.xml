@@ -18,7 +18,7 @@
 		<finalName>${project.artifactId}</finalName>
 		
 		<plugins>
-			<!-- Package UI into a ZIP file to be deployed to SAP Cloud Platform Neo -->
+			<!-- Package UI into a ZIP file to be deployed to SAP Business Technology Platform (BTP)-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>

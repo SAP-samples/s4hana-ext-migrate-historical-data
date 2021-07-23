@@ -8,7 +8,7 @@ Licensed under The Apache Software License, Version 2.0
 VEINHORN/xelem-wrapper (com.github.VEINHORN:xelem-wrapper:c3e6af2c1f - http://xelem.sourceforge.net/)
 Licensed under under the GNU GENERAL PUBLIC LICENSE. (according to its official website)
  
-API for SAP Cloud Platform (Java EE 7 Web Profile TomEE 7) (com.sap.cloud:neo-javaee7-wp-api:1.26.0.1 - https://hana.ondemand.com)
+API for SAP Business Technology Platform (BTP)(Java EE 7 Web Profile TomEE 7) (com.sap.cloud:neo-javaee7-wp-api:1.26.0.1 - https://hana.ondemand.com)
 Licensed under SAP DEVELOPER LICENSE AGREEMENT
  
 S/4HANA - Test Utilities (com.sap.cloud.s4hana:testutil:2.1.0 - https://www.sap.com/s4sdk)
