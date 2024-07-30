@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: s4hana-ext-migrate-historical-data
-Upstream-Contact: Kamatam, Satish Kumar (s.kamatam@sap.com)
+Upstream-Contact: Kumar, Amritanshu (amritanshu.kumar@sap.com)
 Source: https://github.com/SAP-samples/s4hana-ext-migrate-historical-data
 Disclaimer: The code in this project may include calls to APIs (“API Calls”) of
  SAP or third-party products or services developed outside of this project
@@ -25,5 +25,5 @@ Disclaimer: The code in this project may include calls to APIs (“API Calls”)
  parties the right to use of access any SAP External Product, through API Calls.
 
 Files: *
-Copyright:  2019-2020 SAP SE or an SAP affiliate company and s4hana-ext-migrate-historical-data
+Copyright:  2024-2025 SAP SE or an SAP affiliate company and s4hana-ext-migrate-historical-data
 License: Apache-2.0
