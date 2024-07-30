@@ -1,3 +1,0 @@
-# approuter dependencies that are downloaded e.g. when npm is called for approuter
-/node_modules/
-/package-lock.json

@@ -1,3 +1,0 @@
-# db shema deployer dependencies that are downloaded e.g. when npm is called for db shema deployer
-/node_modules/
-/package-lock.json
