@@ -1,0 +1,460 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/OData.svc/$metadata">
+        <edmx:Include Namespace="MigrateHistoricalData"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Annotations Target="MigrateHistoricalData.SalesOrder">
+         <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>id}"/>
+                            <PropertyValue Property="Value" Path="Id"/>
+                            <Annotation Term="UI.Hidden" Bool="true"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>soldToParty}"/>
+                            <PropertyValue Property="Value" Path="SoldToParty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>salesOrderDate}"/>
+                            <PropertyValue Property="Value" Path="SalesOrderDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>documentCurrency}"/>
+                            <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>netValue}"/>
+                            <PropertyValue Property="Value" Path="NetValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n>salesDocumentType}"/>
+                                    <PropertyValue Property="Value" Path="SalesDocumentType"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n>salesOrganization}"/>
+                                    <PropertyValue Property="Value" Path="SalesOrganization"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n>legacySalesDocument}"/>
+                                    <PropertyValue Property="Value" Path="LegacySalesDocument"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n>shipToParty}"/>
+                                    <PropertyValue Property="Value" Path="ShipToParty"/>
+                                </Record>
+                    </Collection>
+                </Annotation>
+               
+<Annotation Term="UI.SelectionVariant" Qualifier="trueSPV">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="Text" String="{@i18n>salesOrders}"/>
+                        <PropertyValue Property="SelectionVariant">
+                            <Record Type="UI.SelectionVariantType">
+                                <PropertyValue Property="SelectOptions">
+                                    <Collection>
+                                        <Record Type="UI.SelectOptionType">
+                                            <PropertyValue Property="PropertyName" PropertyPath="DocumentCurrency"/>
+                                            <PropertyValue Property="Ranges">
+                                                <Collection>
+                                                    <Record Type="UI.SelectionRangeType">
+                                                        <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                        <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+                                                        <PropertyValue Property="Low" String="0"/>
+                                                    </Record>
+                                                </Collection>
+                                            </PropertyValue>
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="PresentationVariant">
+                            <Record Type="UI.PresentationVariantType">
+                                <PropertyValue Property="Visualizations">
+                                    <Collection>
+                                        <AnnotationPath>@UI.LineItem</AnnotationPath>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            <Annotation Term="UI.SelectionFields">
+                <Collection>
+                    <PropertyPath>LegacySalesDocument</PropertyPath>
+                    <PropertyPath>SalesOrganization</PropertyPath>
+                    <PropertyPath>SoldToParty</PropertyPath>
+                </Collection>
+            </Annotation>
+            <Annotation Term="UI.HeaderInfo">
+                <Record>
+                    <PropertyValue Property="TypeName" String="{@i18n>salesOrderDetailPage}"/>
+                    <PropertyValue Property="TypeNamePlural" String=""/>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.Facets">
+                <Collection>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="{@i18n>salesOrders}"/>
+                        <PropertyValue Property="ID" String="i18nsalesOrders"/>
+                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#i18nsalesOrders"/>
+                    </Record>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="{@i18n>salesOrderItems}"/>
+                        <PropertyValue Property="ID" String="SalesOrderItems"/>
+                        <PropertyValue Property="Target" AnnotationPath="Items/@UI.LineItem#SalesOrderItems1"/>
+                    </Record>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="{@i18n>successors}"/>
+                        <PropertyValue Property="ID" String="Successors"/>
+                        <PropertyValue Property="Target" AnnotationPath="Successors/@UI.LineItem#Successors1"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <Annotation Term="UI.FieldGroup" Qualifier="a">
+                <Record Type="UI.FieldGroupType">
+                    <PropertyValue Property="Data">
+                        <Collection/>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.FieldGroup" Qualifier="FOrm1">
+                <Record Type="UI.FieldGroupType">
+                    <PropertyValue Property="Data">
+                        <Collection>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                                <PropertyValue Property="Label" String="{@i18n>documentcurrency}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="LegacySalesDocument"/>
+                                <PropertyValue Property="Label" String="{@i18n>legacysalesdocument}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Id"/>
+                                <PropertyValue Property="Label" String="{@i18n>id}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="NetValue"/>
+                                <PropertyValue Property="Label" String="{@i18n>netvalue}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesDocumentType"/>
+                                <PropertyValue Property="Label" String="{@i18n>salesdocumenttype}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesOrderDate"/>
+                                <PropertyValue Property="Label" String="{@i18n>salesorderdate}"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.FieldGroup" Qualifier="FOrm11">
+                <Record Type="UI.FieldGroupType">
+                    <PropertyValue Property="Data">
+                        <Collection>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                                <PropertyValue Property="Label" String="{@i18n>documentcurrency}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Id"/>
+                                <PropertyValue Property="Label" String="{@i18n>id}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="LegacySalesDocument"/>
+                                <PropertyValue Property="Label" String="{@i18n>legacysalesdocument}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="NetValue"/>
+                                <PropertyValue Property="Label" String="{@i18n>netvalue}"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.FieldGroup" Qualifier="i18nsalesOrders">
+                <Record Type="UI.FieldGroupType">
+                    <PropertyValue Property="Data">
+                        <Collection>
+                            
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="LegacySalesDocument"/>
+                                <PropertyValue Property="Label" String="{@i18n>legacysalesdocument}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesDocumentType"/>
+                                <PropertyValue Property="Label" String="{@i18n>salesdocumenttype}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesOrganization"/>
+                                <PropertyValue Property="Label" String="{@i18n>salesOrganization}"/>
+
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesOrderDate"/>
+                                <PropertyValue Property="Label" String="{@i18n>salesOrderDate}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ShipToParty"/>
+                                <PropertyValue Property="Label" String="{@i18n>shipToParty}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SoldToParty"/>
+                                <PropertyValue Property="Label" String="{@i18n>soldToParty}"/>
+
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="NetValue"/>
+                                <PropertyValue Property="Label" String="{@i18n>netValue}"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                                <PropertyValue Property="Label" String="{@i18n>documentCurrency}"/>
+                            </Record></Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.LineItem" Qualifier="_">
+                <Collection>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="LegacySalesDocument"/>
+                        <PropertyValue Property="Label" String="{@i18n>legacySalesDocument}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="SalesDocumentType"/>
+                        <PropertyValue Property="Label" String="{@i18n>salesDocumentType}"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="SalesOrderDate"/>
+                        <PropertyValue Property="Label" String="{@i18n>salesOrderDate}"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            </Annotations>
+            <Annotations Target="MigrateHistoricalData.GenericDocument">
+             <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>documentDate}"/>
+                            <PropertyValue Property="Value" Path="DocumentDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>documentNumber}"/>
+                            <PropertyValue Property="Value" Path="Document"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>type}"/>
+                            <PropertyValue Property="Value" Path="Type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>id}"/>
+                            <PropertyValue Property="Value" Path="Id"/>
+                            <Annotation Term="UI.Hidden" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="Good">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="Text" String="{@i18n>documentFlow}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="Successors">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrders/Successors/Document"/>
+                            <PropertyValue Property="Label" String="{@i18n>document}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrders/Successors/DocumentDate"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentDate}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrders/Successors/Type"/>
+                            <PropertyValue Property="Label" String="{@i18n>type}"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" Path="Type"/>
+                            <PropertyValue Property="ID" String="Delivery"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Delivery"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="{@i18n>predecessor}"/>
+                                        <PropertyValue Property="ID" String="a"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="{@i18n>salesOrder1}"/>
+                                                    <PropertyValue Property="ID" String="_2"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="SalesOrders/@UI.LineItem#_"/>
+                                                </Record>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="{@i18n>otherDocuments}"/>
+                                                    <PropertyValue Property="ID" String="_1"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="Predecessors/@UI.LineItem#_"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                        <Record Type="UI.CollectionFacet">
+                                        <PropertyValue Property="Label" String="{@i18n>successor}"/>
+                                        <PropertyValue Property="ID" String="b"/>
+                                        <PropertyValue Property="Facets">
+                                            <Collection>
+                                                <Record Type="UI.ReferenceFacet">
+                                                    <PropertyValue Property="Label" String="{@i18n>successorDocuments}"/>
+                                                    <PropertyValue Property="ID" String="SuccessorDocuments"/>
+                                                    <PropertyValue Property="Target" AnnotationPath="Successors/@UI.LineItem#SuccessorDocuments"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Delivery">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Document"/>
+                                    <PropertyValue Property="Label" String="{@i18n>documentNumber}"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Type"/>
+                                    <PropertyValue Property="Label" String="{@i18n>type}"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DocumentDate"/>
+                                    <PropertyValue Property="Label" String="{@i18n>documentDate}"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n>documentFlowDetailPage}"/>
+                        <PropertyValue Property="TypeNamePlural" String=""/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="Predecessor">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="Successor">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="_">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DocumentDate"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentdate1}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Type"/>
+                            <PropertyValue Property="Label" String="{@i18n>type}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Document"/>
+                            <PropertyValue Property="Label" String="{@i18n>document}"/>
+                        </Record></Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="SuccessorDocuments">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrders/Successors/Document"/>
+                            <PropertyValue Property="Label" String="{@i18n>document}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DocumentDate"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentdate1}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Type"/>
+                            <PropertyValue Property="Label" String="{@i18n>type}"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="Successors1">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DocumentDate"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentdate}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Document"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentNumber}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Type"/>
+                            <PropertyValue Property="Label" String="{@i18n>type}"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="MigrateHistoricalData.SalesOrder/SalesOrganization">
+                <Annotation Term="Common.Label" String="{@i18n>salesOrganization}"/>
+            </Annotations>
+            <Annotations Target="MigrateHistoricalData.SalesOrder/SoldToParty">
+                <Annotation Term="Common.Label" String="{@i18n>soldToParty}"/>
+            </Annotations>
+            <Annotations Target="MigrateHistoricalData.SalesOrderItem">
+                <Annotation Term="UI.LineItem" Qualifier="SalesOrderItems">
+                    <Collection>
+                        </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="SalesOrderItems1">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ItemCategory"/>
+                            <PropertyValue Property="Label" String="{@i18n>itemcategory}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Material"/>
+                            <PropertyValue Property="Label" String="{@i18n>material}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Plant"/>
+                            <PropertyValue Property="Label" String="{@i18n>plant}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RequestedQuantityUnit"/>
+                            <PropertyValue Property="Label" String="{@i18n>requestedquantityunit}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RequestedQuantity"/>
+                            <PropertyValue Property="Label" String="{@i18n>requestedquantity}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ShipToParty"/>
+                            <PropertyValue Property="Label" String="{@i18n>shipToParty}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="NetValue"/>
+                            <PropertyValue Property="Label" String="{@i18n>netValue}"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                            <PropertyValue Property="Label" String="{@i18n>documentCurrency}"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="MigrateHistoricalData.SalesOrder/LegacySalesDocument">
+                <Annotation Term="Common.Label" String="{@i18n>legacysalesdocument1}"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

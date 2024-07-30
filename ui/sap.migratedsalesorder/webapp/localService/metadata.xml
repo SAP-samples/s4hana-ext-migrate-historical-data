@@ -1,0 +1,75 @@
+<?xml
+version='1.0' encoding='UTF-8'?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MigrateHistoricalData">
+            <EntityType Name="SalesOrderItem">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="NetValue" Type="Edm.Decimal" Precision="9" Scale="2"/>
+                <Property Name="ItemCategory" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IncotermsPart2" Type="Edm.String" MaxLength="255"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IncotermsPart1" Type="Edm.String" MaxLength="255"/>
+                <Property Name="SalesOrderItem" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="RequestedQuantityUnit" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IncotermsVersion" Type="Edm.String" MaxLength="255"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="255"/>
+                <Property Name="RequestedQuantity" Type="Edm.Decimal" Precision="9" Scale="3"/>
+                <Property Name="Id" Type="Edm.Int64"/>
+                <Property Name="TermsOfPaymentKey" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ShipToParty" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="SalesOrder" Type="MigrateHistoricalData.SalesOrder" Partner="Items"/>
+            </EntityType>
+            <EntityType Name="GenericDocument">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="DocumentDate" Type="Edm.Date"/>
+                <Property Name="Document" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int64"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <NavigationProperty Name="Predecessors" Type="Collection(MigrateHistoricalData.GenericDocument)"/>
+                <NavigationProperty Name="SalesOrders" Type="Collection(MigrateHistoricalData.SalesOrder)"/>
+                <NavigationProperty Name="Successors" Type="Collection(MigrateHistoricalData.GenericDocument)" Partner="Predecessors"/>
+            </EntityType>
+            <EntityType Name="SalesOrder">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="SoldToParty" Type="Edm.String" MaxLength="255"/>
+                <Property Name="SalesOrderDate" Type="Edm.DateTimeOffset" Precision="0"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="255"/>
+                <Property Name="NetValue" Type="Edm.Decimal" Precision="9" Scale="2"/>
+                <Property Name="Id" Type="Edm.Int64"/>
+                <Property Name="SalesDocumentType" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="255"/>
+                <Property Name="LegacySalesDocument" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="ShipToParty" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="Successors" Type="Collection(MigrateHistoricalData.GenericDocument)" Partner="SalesOrders"/>
+                <NavigationProperty Name="Items" Type="Collection(MigrateHistoricalData.SalesOrderItem)" Partner="SalesOrder">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityContainer Name="MigrateHistoricalDataContainer">
+                <EntitySet Name="SalesOrders" EntityType="MigrateHistoricalData.SalesOrder">
+                    <NavigationPropertyBinding Path="Successors" Target="GenericDocuments"/>
+                    <NavigationPropertyBinding Path="Items" Target="SalesOrderItems"/>
+                </EntitySet>
+                <EntitySet Name="GenericDocuments" EntityType="MigrateHistoricalData.GenericDocument">
+                    <NavigationPropertyBinding Path="SalesOrders" Target="SalesOrders"/>
+                    <NavigationPropertyBinding Path="Predecessors" Target="GenericDocuments"/>
+                    <NavigationPropertyBinding Path="Successors" Target="GenericDocuments"/>
+                </EntitySet>
+                <EntitySet Name="SalesOrderItems" EntityType="MigrateHistoricalData.SalesOrderItem">
+                    <NavigationPropertyBinding Path="SalesOrder" Target="SalesOrders"/>
+                </EntitySet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

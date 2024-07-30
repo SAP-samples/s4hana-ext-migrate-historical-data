@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Version: 1.0.0.202404161742
+Created-By: Maven Integration for Eclipse
+x-sap-ui5-BuildTimestamp: 202404161742
+x-sap-ui5-ScmRevision: 
+x-sap-ui5-Version: 1.0.0-SNAPSHOT
+

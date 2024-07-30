@@ -1,0 +1,36 @@
+{
+  "name": "transpiler",
+  "version": "1.0.0",
+  "description": "ES6+ to ES5 transpiler for the sap.ca analysis plugin which makes use of Rhino JavaScript engine",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "npm run lint && npm run unit",
+    "lint": "eslint ./",
+    "unit": "ava",
+    "unit-watch": "ava --watch",
+    "unit-inspect": "node --inspect-brk node_modules/ava/profile.js",
+    "unit-update-snapshots": "ava --update-snapshots"
+  },
+  "ava": {
+    "files": [
+      "test/lib/**/*.js"
+    ],
+    "watchMode": {
+      "ignoreChanges": [
+        "test/tmp/**"
+      ]
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "globby": "^14.0.0"
+  },
+  "devDependencies": {
+    "ava": "^6.1.1",
+    "eslint": "^8.56.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-ava": "^14.0.0"
+  }
+}
