@@ -18,8 +18,8 @@ SAP Extensibility Explorer is a central place where anyone involved in the exten
 
 Requirements
 -------------
-- An account in SAP Business Technology Platform (BTP) with a subaccount in the _Cloud Foundry_ environment and Enterpise Messaging, Authorization & Trust Management services enabled _or_ an account in SAP Business Technology Platform (BTP) with a subaccount in the _Neo_ environment, an SAP Business Technology Platform (BTP) Java server of any size and Data Management service (SAP HANA or SAP ASE) enabled.
-- [Java SE **8** Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and [Apache Maven](http://maven.apache.org/download.cgi) to build the application.
+- An account in SAP Business Technology Platform (BTP) with a subaccount in the _Cloud Foundry_ environment and Enterpise Messaging, Authorization & Trust Management services enabled, an SAP Business Technology Platform (BTP) Java server of any size and Data Management service (SAP HANA or SAP ASE) enabled.
+- [JDK 17](https://openjdk.org/projects/jdk/17/) and [Apache Maven](http://maven.apache.org/download.cgi) to build the application.
 - [Cloud Foundry Command Line Interface (CF CLI)](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) tool in case you want to deploy the application to Cloud Foundry.
 
 Download and Installation

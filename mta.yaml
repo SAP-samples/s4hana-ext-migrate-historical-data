@@ -1,0 +1,143 @@
+_schema-version: "3.2"
+ID: ui
+description: Fiori elements app
+version: 0.0.1
+modules:
+- name: ui-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: ui-destination-service
+    parameters:
+      content-target: true
+  - name: ui-repo-host
+    parameters:
+      service-key:
+        name: ui-repo-host-key
+  - name: ui-uaa
+    parameters:
+      service-key:
+        name: ui-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: ui_repo_host
+          ServiceInstanceName: ui-html5-srv
+          ServiceKeyName: ui-repo-host-key
+          sap.cloud.service: ui
+        - Authentication: OAuth2UserTokenExchange
+          Name: ui_uaa
+          ServiceInstanceName: ui-xsuaa-srv
+          ServiceKeyName: ui-uaa-key
+          sap.cloud.service: ui
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: ui-app-content
+  type: com.sap.application.content
+  path: ui
+  requires:
+  - name: ui-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    ignore: ["node_modules/"]
+    requires:
+    - artifacts:
+      - sapmigratedsalesorder.zip
+      name: sapmigratedsalesorder
+      target-path: resources/
+- name: sapmigratedsalesorder
+  type: html5
+  path: ui/sap.migratedsalesorder
+  build-parameters:
+    ignore: ["node_modules/"]
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: sales-order-backend
+  type: java
+  path: backend
+  parameters:
+    memory: 1024M
+    buildpack: java_buildpack
+  properties:
+     JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 17.0.+ }}'
+     SPRING_PROFILES_ACTIVE: cloud
+     SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+  build-parameters:
+    builder: custom
+    commands: 
+      - mvn clean install
+    build-result: /application/target/migratehistoricaldata-application.jar
+  requires:
+      - name: ui-uaa
+      - name: sales_order_db
+  provides:
+  - name: backend-route
+    properties:
+      url: ${default-url}
+- name: sales-order-db
+  type: hdb
+  path: db
+  parameters:
+      buildpack: nodejs_buildpack
+  build-parameters:
+      ignore: ["default-env.json","package-lock.json", "node_modules/"]
+      builder: custom
+      commands: []
+  requires:
+      - name: <database-service-instance>
+resources:
+- name: ui-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: ui-xsuaa-srv
+    service-plan: application
+- name: ui-destination-service
+  type: org.cloudfoundry.managed-service
+  requires:
+  - name: backend-route
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com/
+          - Authentication: NoAuthentication
+            ForwardAuthToken: true
+            HTML5.DynamicDestination: true
+            HTML5.FowardAuthToken: true
+            Name: mybackend
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{backend-route/url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: ui-destination-service
+    service-plan: lite
+- name: ui-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: ui-html5-srv
+    service-plan: app-host
+- name: <database-service-instance>
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+parameters:
+  deploy_mode: html5-repo

@@ -1,0 +1,13 @@
+/* A table to represent the document flow: a Many-to-Many mapping between Sales orders and Generic documents.
+
+You need to follow the same naming convention as in EclipseLink when creating tables in HANA DB since table and field names are case-sensitive.
+
+Please refer to help portal for data types: 
+https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/cf394efd3fb4400f9c09d10315028515.html */
+
+COLUMN TABLE GENERICDOCUMENT_SALESORDER (
+  SALESORDERS_ID BIGINT,
+  SUCCESSORS_ID BIGINT,
+  PRIMARY KEY (SALESORDERS_ID, SUCCESSORS_ID)
+);
+

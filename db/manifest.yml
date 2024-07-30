@@ -1,0 +1,22 @@
+# Optional: to be used with SAP HANA DB on Cloud Foundry only.
+#
+# Only creates a schema which is required for the backend.
+# Can be stopped after the first successful run.
+#
+# Usage: call "cf push" from the db folder of the project
+#
+---
+applications:
+- name: DB_I742214
+  no-route: true   
+  memory: 512M
+  disk_quota: 512M
+  buildpack: nodejs_buildpack
+  services:
+  # TODO replace placeholders with the existing service instances names
+    - sales_order_db
+    - my-application-logs
+
+
+
+  

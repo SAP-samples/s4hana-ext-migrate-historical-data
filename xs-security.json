@@ -1,0 +1,29 @@
+{
+    "xsappname": "ui",
+  
+    "tenant-mode": "dedicated",
+    "scopes": [
+      {
+        "name": "$XSAPPNAME.Admin",
+        "description": "Admin permissions."
+      }
+    ],
+    "role-templates": [
+      {
+        "name": "Administrator",
+        "description": "View Sensitive Data",
+        "scope-references": [
+          "$XSAPPNAME.Admin"
+        ]
+      }
+    ],
+    "role-collections": [
+      {
+        "name": "Administrator",
+        "description": "Administrator (read all)",
+        "role-template-references": [
+          "$XSAPPNAME.Administrator"
+        ]
+      }
+    ]
+  }  

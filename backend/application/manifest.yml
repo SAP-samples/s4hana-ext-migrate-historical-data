@@ -1,0 +1,15 @@
+applications:
+- name: bootapp
+  instances: 1
+  memory: 896M
+  path: target/migratehistoricaldata-application.jar
+  services:
+    - ui-xsuaa-srv 
+    - sales_order_db
+  buildpacks:
+    - java_buildpack
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 17.0.+ }}'
+    SPRING_PROFILES_ACTIVE: cloud
+    SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+
