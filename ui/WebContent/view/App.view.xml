@@ -1,8 +1,0 @@
-<mvc:View
-   controllerName="sap.migratedsalesorder.controller.App"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc"
-   displayBlock="true">
-   <SplitApp id="idAppControl" />
-
-</mvc:View>
