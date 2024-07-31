@@ -7,7 +7,7 @@
 #
 ---
 applications:
-- name: DB_I742214
+- name: DB_Migrate
   no-route: true   
   memory: 512M
   disk_quota: 512M
